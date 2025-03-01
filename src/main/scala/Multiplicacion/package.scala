@@ -1,17 +1,21 @@
 package object Multiplicacion{
+  
   def PeasantAlgorithm(x: Int, y: Int): Int = {
     if (x == 0) 0
     else if (x % 2 == 0) PeasantAlgorithm(x/2, y+y)
     else PeasantAlgorithm(x/2, y+y) + y
   }
 
-  def PeasantAlgorithmIt(a: Int, b: Int, result: Int): Int = {
-    def isOdd: Int = PeasantAlgorithmIt(a / 2, b + b, result)
-    def isOven: Int = PeasantAlgorithmIt(a / 2, b + b, result + b)
-    if (a != 0) if (a%2==0) isOdd else isOven else result
+  def PeasantAlgorithmIt(a: Int, b: Int): Int = {
+    def iterativeAlgorithm(a: Int, b: Int, result: Int): Int = {
+      def isOdd: Int = iterativeAlgorithm(a / 2, b + b, result)
+      def isOven: Int = iterativeAlgorithm(a / 2, b + b, result + b)
+      if (a != 0) if (a%2==0) isOdd else isOven else result
+    }
+    iterativeAlgorithm(a, b, 0)
   }
 
-  def SplitAlgorithm(a: Int, b: Int): Int = {
+  def splitMultiply(a: Int, b: Int): Int = {
 
     def numberDigits(c: Int, nDigits: Int): Int = if(c == 0)  nDigits  else numberDigits(c / 10, nDigits + 1);
 
@@ -31,17 +35,17 @@ package object Multiplicacion{
     val topPartB = defTopPart(b, nFinal)
     val bottomPartB = defBottomPart(b, nFinal)
 
-    def firstStep: Int = Math.pow(10, nFinal*2).toInt * SplitAlgorithm(topPartA,topPartB)
-    def secondStep: Int = Math.pow(10, nFinal).toInt * ( SplitAlgorithm(bottomPartA,topPartB) + SplitAlgorithm(bottomPartB,topPartA) )
-    def thirdStep: Int = SplitAlgorithm(bottomPartA,bottomPartB)
+    def firstStep: Int = Math.pow(10, nFinal*2).toInt * splitMultiply(topPartA,topPartB)
+    def secondStep: Int = Math.pow(10, nFinal).toInt * ( splitMultiply(bottomPartA,topPartB) + splitMultiply(bottomPartB,topPartA) )
+    def thirdStep: Int = splitMultiply(bottomPartA,bottomPartB)
 
     def algorithmMethod(): Int = firstStep + secondStep + thirdStep
 
     algorithmMethod();
   }
-  
 
-  def FastAlgorithm(a: Int, b: Int): Int = {
+
+  def fastMultiply(a: Int, b: Int): Int = {
     def numberDigits(c: Int, nDigits: Int): Int = if (c == 0) nDigits else numberDigits(c / 10, nDigits + 1)
 
     def abs(x: Int) = if(x >= 0) a else -x
@@ -61,12 +65,12 @@ package object Multiplicacion{
     val topPartB = defTopPart(b, nFinal)
     val bottomPartB = defBottomPart(b, nFinal)
 
-    val topRecycled = FastAlgorithm(topPartA,topPartB)
-    val bottomRecycled = FastAlgorithm(bottomPartA, bottomPartB)
+    val topRecycled = fastMultiply(topPartA,topPartB)
+    val bottomRecycled = fastMultiply(bottomPartA, bottomPartB)
 
     def firstStep: Int = Math.pow(10, nFinal * 2).toInt * topRecycled
 
-    def secondStep: Int = Math.pow(10, nFinal).toInt * (topRecycled + bottomRecycled - FastAlgorithm((topPartA - bottomPartA),(topPartB - bottomPartB)))
+    def secondStep: Int = Math.pow(10, nFinal).toInt * (topRecycled + bottomRecycled - fastMultiply((topPartA - bottomPartA),(topPartB - bottomPartB)))
 
     def thirdStep: Int = bottomRecycled
 
