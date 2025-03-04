@@ -14,11 +14,15 @@ PeasantAlgorithmIt(12,15)
 PeasantAlgorithmIt(12345,43)
 PeasantAlgorithmIt(1234566,988)
 
+splitMultiply(0,34)
+splitMultiply(12,0)
+splitMultiply(3,8)
+splitMultiply(1,34)
+splitMultiply(130,434)
+splitMultiply(1256,1523)
+splitMultiply(89765,43)
+splitMultiply(7,143)
 
-
-splitMultiply(4,5)
-splitMultiply(2145,3233)
-splitMultiply(14,32)
 
 fastMultiply(4,20)
 fastMultiply(2145,123)
