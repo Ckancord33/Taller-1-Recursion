@@ -1,9 +1,13 @@
 import Multiplicacion._
 
 PeasantAlgorithm(0,34)
-PeasantAlgorithm(0,12)
+PeasantAlgorithm(12,0)
 PeasantAlgorithm(50,1)
 PeasantAlgorithm(1,1234)
+PeasantAlgorithm(13,4)
+PeasantAlgorithm(12,15)
+PeasantAlgorithm(12345,43)
+PeasantAlgorithm(1234566,988)
 
 PeasantAlgorithmIt(0,34)
 PeasantAlgorithmIt(12,0)
@@ -24,6 +28,10 @@ splitMultiply(89765,43)
 splitMultiply(7,143)
 
 
-fastMultiply(4,20)
-fastMultiply(2145,123)
-fastMultiply(14454,32540)
+fastMultiply(0,34)
+fastMultiply(12,0)
+fastMultiply(3,8)
+fastMultiply(130,434)
+fastMultiply(1256,1523)
+fastMultiply(89765,43)
+fastMultiply(7,143)
